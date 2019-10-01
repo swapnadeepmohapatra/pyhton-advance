@@ -1,3 +1,4 @@
+import RPi.GPIO as GPIO
 from time import sleep
 import sys
 from mfrc522 import SimpleMFRC522
@@ -23,9 +24,9 @@ try:
         cardNo = id
         timeNow = datetime.now().strftime("%H:%M:%S")
         dateNow = datetime.today().strftime("%D")
-        dateNow = dateNow.replace(":","-")
+        dateNowNew = dateNow.replace("/","-")
         print("ID: ", cardNo)
-        db.child("rfid_cards").child(cardNo).child(dateNow).push({"Time":timeNow})
+        db.child("rfid_cards").child(cardNo).child(dateNowNew).push({"Time":timeNow})
         print('Updated')
         sleep(5)
 except KeyboardInterrupt:
