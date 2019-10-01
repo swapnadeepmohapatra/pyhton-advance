@@ -24,7 +24,7 @@ try:
         timeNow = datetime.now().strftime("%H:%M:%S")
         dateNow = datetime.today().strftime("%D")
         print("ID: ", cardNo)
-        db.child("rfid_cards").child(cardNo).push({"Time":str(timeNow,dateNow)})
+        db.child("rfid_cards").child(cardNo).child(dateNow).push({"Time":timeNow})
         print('Updated')
         sleep(5)
 except KeyboardInterrupt:
