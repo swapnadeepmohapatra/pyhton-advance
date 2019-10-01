@@ -22,8 +22,9 @@ try:
         id, text = reader.read()
         cardNo = id
         timeNow = datetime.now().strftime("%H:%M:%S")
+        dateNow = datetime.today().strftime("%D")
         print("ID: ", cardNo)
-        db.child("rfid_cards").child(cardNo).push({str(timeNow)})
+        db.child("rfid_cards").child(cardNo).push({"Time":str(timeNow,dateNow)})
         print('Updated')
         sleep(5)
 except KeyboardInterrupt:
