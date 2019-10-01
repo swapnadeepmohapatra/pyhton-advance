@@ -7,11 +7,10 @@ from datetime import datetime
 reader = SimpleMFRC522()
 
 config = {
-  "apiKey": "apiKey",
-  "authDomain": "projectId.firebaseapp.com",
-  "databaseURL": "https://databaseName.firebaseio.com",
-  "storageBucket": "projectId.appspot.com",
-  "serviceAccount": "path/to/serviceAccountCredentials.json"
+    "apiKey": "AIzaSyBG510i9aGXHr7s3B_4JRIlqFj_CCYRc_8",
+    "authDomain": "iottest-89b28.firebaseapp.com",
+    "databaseURL": "https://iottest-89b28.firebaseio.com",
+    "storageBucket": "iottest-89b28.appspot.com"
 }
 
 firebase = pyrebase.initialize_app(config)
@@ -22,9 +21,10 @@ try:
         print("Hold a tag near the reader")
         id, text = reader.read()
         cardNo = id
-        print("ID: ",cardNo)
-        db.child("rfid_cards").child(cardNo).update({"name": "Mortiest Morty"})
-
+        timeNow = datetime.now().strftime("%H:%M:%S")
+        print("ID: ", cardNo)
+        db.child("rfid_cards").child(cardNo).push({str(timeNow)})
+        print('Updated')
         sleep(5)
 except KeyboardInterrupt:
     GPIO.cleanup()
