@@ -23,6 +23,7 @@ try:
         cardNo = id
         timeNow = datetime.now().strftime("%H:%M:%S")
         dateNow = datetime.today().strftime("%D")
+        dateNow = dateNow.replace(":","-")
         print("ID: ", cardNo)
         db.child("rfid_cards").child(cardNo).child(dateNow).push({"Time":timeNow})
         print('Updated')
