@@ -2,7 +2,7 @@ import cv2
 import time
 
 faceCascade = cv2.CascadeClassifier(
-    'D:\\PythonAdvance\\OpenCV\\haarcascade_frontalface_default.xml')
+    'D:\\PythonAdvance\\OpenCV\\haar_face.xml')
 camera = cv2.VideoCapture(0, cv2.CAP_DSHOW)
 
 i = 1
